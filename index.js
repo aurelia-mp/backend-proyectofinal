@@ -35,6 +35,10 @@ app.get('', (req, res)=>{
     res.render('main')
 })
 
+app.get('*', ((req, res) => {
+    res.send({ status: "error: -2", description: `ruta ${req.url} método ${req.method} no implementada` });
+}))
+
 app.listen(PORT, () =>{
     console.log(`Servidor OK en puerto ${PORT}`)
 })
