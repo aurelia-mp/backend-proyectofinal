@@ -37,7 +37,10 @@ const modificarProductoById = (req,res) =>{
     let id = parseInt(req.params.id)
     let timestamp= Date.now()
 
-    let cambios = req.body
+    let cambios = {
+        ...req.body,
+        timestamp:timestamp
+    }
     productos.udpateById(id, cambios)
 
     .then(resp=>{

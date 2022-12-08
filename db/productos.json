@@ -1,12 +1,12 @@
 [
   {
-    "nombre": "Luigi Bosca Malbec",
+    "nombre": "Luigi Bosca Blend",
     "descripcion": "Vino tinto. Potencial de guarda: 5 años",
     "codigo": "45789",
     "precio": "4000",
     "stock": "50",
     "thumbnail": "/upload/item1.jpeg",
-    "timestamp": 1670155337055,
+    "timestamp": 1670513765475,
     "id": 1
   },
   {
@@ -26,7 +26,7 @@
     "precio": "5000",
     "stock": "100",
     "thumbnail": "/upload/item4.jpeg",
-    "timestamp": 1670157321174,
+    "timestamp": 1670513726384,
     "id": 4
   },
   {
@@ -38,5 +38,15 @@
     "thumbnail": "/upload/item5.jpeg",
     "timestamp": 1670414213829,
     "id": 5
+  },
+  {
+    "nombre": "Prueba",
+    "descripcion": "123",
+    "codigo": "12132132",
+    "precio": "4560",
+    "stock": "12",
+    "thumbnail": "/upload/item2.jpeg",
+    "timestamp": 1670502195537,
+    "id": 6
   }
 ]
