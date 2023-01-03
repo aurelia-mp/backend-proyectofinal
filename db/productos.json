@@ -23,7 +23,7 @@
     "nombre": "Luigi Bosca Malbec",
     "descripcion": "Vino tinto clásico argentino",
     "codigo": "477933",
-    "precio": "5000",
+    "precio": "3900",
     "stock": "100",
     "thumbnail": "/upload/item4.jpeg",
     "timestamp": 1670513726384,
@@ -40,13 +40,53 @@
     "id": 5
   },
   {
-    "nombre": "Prueba",
-    "descripcion": "123",
-    "codigo": "12132132",
-    "precio": "4560",
-    "stock": "12",
-    "thumbnail": "/upload/item2.jpeg",
-    "timestamp": 1670502195537,
+    "nombre": "Trumpeter Cabernet",
+    "descripcion": "Vino bodega Trumpeter. Ideal para pastas y arroces",
+    "codigo": "450358203",
+    "precio": "1800",
+    "stock": "80",
+    "thumbnail": "/upload/item6.jpeg",
+    "timestamp": 1670414213829,
     "id": 6
+  },
+  {
+    "nombre": "Angélica Zapata",
+    "descripcion": "Excelente vino, potencial de guarda: 10 años",
+    "codigo": "450358203",
+    "precio": "5000",
+    "stock": "12",
+    "thumbnail": "/upload/item7.jpeg",
+    "timestamp": 1670414213829,
+    "id": 7
+  },
+  {
+    "nombre": "Alamos Malbec",
+    "descripcion": "Un clásico Malbec perfecto para acompañar un asado",
+    "codigo": "45301992",
+    "precio": "1300",
+    "stock": "12",
+    "thumbnail": "/upload/item8.jpeg",
+    "timestamp": 1670414213829,
+    "id": 8
+  },
+  {
+    "nombre": "Mosquita Muerta Malbec",
+    "descripcion": "Excelente vino de una bodega boutique",
+    "codigo": "45232114",
+    "precio": "3100",
+    "stock": "19",
+    "thumbnail": "/upload/item9.jpeg",
+    "timestamp": 1670414213829,
+    "id": 9
+  },
+  {
+    "nombre": "Amalaya Torrontes",
+    "descripcion": "Vino blanco salteño",
+    "codigo": "2345994",
+    "precio": "2650",
+    "stock": "45",
+    "thumbnail": "/upload/item10.jpeg",
+    "timestamp": 1670414213829,
+    "id": 10
   }
 ]
