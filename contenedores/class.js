@@ -1,4 +1,4 @@
-const fs = require('fs').promises
+import fs from 'fs/promises'
 
 class Contenedor {
     constructor(path){
@@ -104,4 +104,4 @@ class Contenedor {
     }
 }
 
-module.exports=Contenedor
+export default Contenedor

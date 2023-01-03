@@ -1,8 +1,9 @@
-const Contenedor = require('../contenedores/class')
+import Contenedor from "../contenedores/class.js"
+
 const carritos = new Contenedor('./db/carritos.json')
 const productos = new Contenedor('./db/productos.json')
 
-const crearCarrito = (req,res) =>{
+export const crearCarrito = (req,res) =>{
     // crear  un carrito vacío y devuelve  el id
     let timestamp = Date.now()
     let nuevoCarrito = {
@@ -13,14 +14,15 @@ const crearCarrito = (req,res) =>{
     .then(id => res.send(`Carrito creado con el id ${id}`))
 }
 
-const borrarCarrito = (req,res) =>{
+export const borrarCarrito = (req,res) =>{
     let id = parseInt(req.params.id)
     carritos.deleteById(id)
     .then(resp =>{
         res.send('Carrito eliminado')
     })
 }
-const getCarrito = (req,res) => {
+
+export const getCarrito = (req,res) => {
     //  Lista los productos del carrito
     let id= parseInt(req.params.id)
     carritos.getById(id)
@@ -33,7 +35,7 @@ const getCarrito = (req,res) => {
     })
 }
 
-const agregarItemAlCarrito  = (req,res)  =>{
+export const agregarItemAlCarrito  = (req,res)  =>{
     // Carga un producto a un carrito con el id de producto
     let id = parseInt(req.params.id)
     let id_prod =parseInt(req.params.id_prod)
@@ -53,7 +55,7 @@ const agregarItemAlCarrito  = (req,res)  =>{
     })
 }
 
-const agregarVariosItemsAlCarrito  = (req, res) =>{
+export const agregarVariosItemsAlCarrito  = (req, res) =>{
     // Carga un nuevo array de productos a un carrito
     let prods = req.body
     let id = parseInt(req.params.id)
@@ -71,7 +73,7 @@ const agregarVariosItemsAlCarrito  = (req, res) =>{
     })
 }
 
-const borrarItemDelCarrito = (req,res) =>{
+export const borrarItemDelCarrito = (req,res) =>{
     let id = parseInt(req.params.id)
     let id_prod = parseInt(req.params.id_prod)
     carritos.getById(id)
@@ -88,13 +90,4 @@ const borrarItemDelCarrito = (req,res) =>{
         res.send("Producto eliminado")
     })
     .catch(err => {res.send(`Error: el carrito no existe - ${err}`)}) 
-}
-
-module.exports = {
-    getCarrito,
-    borrarCarrito,
-    crearCarrito,
-    agregarItemAlCarrito,
-    agregarVariosItemsAlCarrito,
-    borrarItemDelCarrito
 }

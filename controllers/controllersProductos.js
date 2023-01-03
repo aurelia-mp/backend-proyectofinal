@@ -1,7 +1,9 @@
-const Contenedor = require('../contenedores/class')
-const productos = new Contenedor('./db/productos.json')
+import Contenedor from '../contenedores/class.js'
 
-const getProductos = (req,res) =>{
+// const Contenedor = require('../contenedores/class')
+export const productos = new Contenedor('./db/productos.json')
+
+export const getProductos = (req,res) =>{
     productos.getAll()
     .then(productos=>{
         res.render('products', {productos: productos})
@@ -11,7 +13,7 @@ const getProductos = (req,res) =>{
     })
 }
 
-const getProductoById = (req,res) =>{
+export const getProductoById = (req,res) =>{
         let id = parseInt(req.params.id)
         productos.getById(id)
         .then(resp => 
@@ -22,7 +24,7 @@ const getProductoById = (req,res) =>{
             )
 }
 
-const borrarProductoById = (req,res) =>{
+export const borrarProductoById = (req,res) =>{
     let id=parseInt(req.params.id)
     productos.deleteById(id)
     .then(resp=>
@@ -33,7 +35,7 @@ const borrarProductoById = (req,res) =>{
         )
 }
 
-const modificarProductoById = (req,res) =>{
+export const modificarProductoById = (req,res) =>{
     let id = parseInt(req.params.id)
     let timestamp= Date.now()
 
@@ -48,7 +50,7 @@ const modificarProductoById = (req,res) =>{
     })
 }
 
-const crearProducto = (req,res,next) =>{
+export const crearProducto = (req,res,next) =>{
     const file = req.file
 
     if(!file) {
@@ -72,7 +74,7 @@ const crearProducto = (req,res,next) =>{
     }
     productos.save(producto)
 
-    .then(resp =>{
+    .then(() =>{
         console.log('Producto guardado')
         productos.getAll()
         .then((listaProductos) =>{
@@ -80,11 +82,3 @@ const crearProducto = (req,res,next) =>{
         })
     })
 }
-
-module.exports = {
-    getProductos,
-    getProductoById,
-    modificarProductoById,
-    crearProducto,
-    borrarProductoById
-} 

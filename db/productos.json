@@ -88,5 +88,15 @@
     "thumbnail": "/upload/item10.jpeg",
     "timestamp": 1670414213829,
     "id": 10
+  },
+  {
+    "nombre": "Prueba",
+    "descripcion": "Vino de prueba",
+    "codigo": "1224124",
+    "precio": "2300",
+    "stock": "1",
+    "thumbnail": "/upload/item1.jpeg",
+    "timestamp": 1672765388293,
+    "id": 11
   }
 ]
