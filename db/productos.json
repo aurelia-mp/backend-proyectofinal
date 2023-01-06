@@ -98,5 +98,35 @@
     "thumbnail": "/upload/item1.jpeg",
     "timestamp": 1672765388293,
     "id": 11
+  },
+  {
+    "nombre": "Prueba2",
+    "descripcion": "Vino de prueba 2",
+    "codigo": "2345",
+    "precio": "4000",
+    "stock": "30",
+    "thumbnail": "/upload/item5.jpeg",
+    "timestamp": 1672833262674,
+    "id": 12
+  },
+  {
+    "nombre": "Prueba2",
+    "descripcion": "Vino de prueba 2",
+    "codigo": "2345",
+    "precio": "4000",
+    "stock": "30",
+    "thumbnail": "/upload/item5.jpeg",
+    "timestamp": 1672833266697,
+    "id": 13
+  },
+  {
+    "nombre": "Prueba3",
+    "descripcion": "Funciona?",
+    "codigo": "46000",
+    "precio": "5000",
+    "stock": "1",
+    "thumbnail": "/upload/item4.jpeg",
+    "timestamp": 1672833318621,
+    "id": 14
   }
 ]

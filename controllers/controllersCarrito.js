@@ -1,7 +1,7 @@
-import Contenedor from "../contenedores/class.js"
-
-const carritos = new Contenedor('./db/carritos.json')
-const productos = new Contenedor('./db/productos.json')
+import {
+    productosDao as productosApi,
+    carritosDao as carritosApi
+} from '../daos/index.js'
 
 export const crearCarrito = (req,res) =>{
     // crear  un carrito vacío y devuelve  el id
@@ -10,13 +10,13 @@ export const crearCarrito = (req,res) =>{
         items: [],
         cart_timestamp: timestamp
     } 
-    carritos.save(nuevoCarrito)
+    carritosApi.save(nuevoCarrito)
     .then(id => res.send(`Carrito creado con el id ${id}`))
 }
 
 export const borrarCarrito = (req,res) =>{
-    let id = parseInt(req.params.id)
-    carritos.deleteById(id)
+    let id = req.params.id
+    carritosApi.deleteById(id)
     .then(resp =>{
         res.send('Carrito eliminado')
     })
@@ -24,8 +24,8 @@ export const borrarCarrito = (req,res) =>{
 
 export const getCarrito = (req,res) => {
     //  Lista los productos del carrito
-    let id= parseInt(req.params.id)
-    carritos.getById(id)
+    let id= req.params.id
+    carritosApi.getById(id)
     .then((carrito) => {
         let prods = carrito[0]["items"]
         res.json({"Productos en el carrito:" : prods})
@@ -37,16 +37,16 @@ export const getCarrito = (req,res) => {
 
 export const agregarItemAlCarrito  = (req,res)  =>{
     // Carga un producto a un carrito con el id de producto
-    let id = parseInt(req.params.id)
-    let id_prod =parseInt(req.params.id_prod)
-    productos.getById(id_prod)
+    let id = req.params.id
+    let id_prod =req.params.id_prod
+    productosApi.getById(id_prod)
     .then((productoNuevo)=>{
-        carritos.getById(id)
+        carritosApi.getById(id)
         .then((carritoAActualizar) =>{
             let prods= carritoAActualizar[0]["items"]
             prods.push(productoNuevo[0])
             let cart_timestamp = Date.now()
-            carritos.udpateById(id, {"items": prods, cart_timestamp})
+            carritosApi.udpateById(id, {"items": prods, cart_timestamp})
             res.send("Carrito actualizado")
         })
         .catch((err) =>{
@@ -58,9 +58,9 @@ export const agregarItemAlCarrito  = (req,res)  =>{
 export const agregarVariosItemsAlCarrito  = (req, res) =>{
     // Carga un nuevo array de productos a un carrito
     let prods = req.body
-    let id = parseInt(req.params.id)
+    let id = req.params.id
     let cart_timestamp = Date.now()
-    carritos.udpateById(id, {"items": prods, cart_timestamp})
+    carritosApi.udpateById(id, {"items": prods, cart_timestamp})
     .then((respuesta) =>{
         console.log(respuesta)
         if(respuesta === null){
@@ -74,9 +74,9 @@ export const agregarVariosItemsAlCarrito  = (req, res) =>{
 }
 
 export const borrarItemDelCarrito = (req,res) =>{
-    let id = parseInt(req.params.id)
-    let id_prod = parseInt(req.params.id_prod)
-    carritos.getById(id)
+    let id = req.params.id
+    let id_prod = req.params.id_prod
+    carritosApi.getById(id)
     .then((carrito)=>{
         let prods= carrito[0]["items"]
         let index = prods.findIndex((el) => el.id === id_prod)
@@ -86,7 +86,7 @@ export const borrarItemDelCarrito = (req,res) =>{
         }
         prods.splice(index,1)
         let cart_timestamp = Date.now()
-        carritos.udpateById(id, {"items": prods, cart_timestamp})
+        carritosApi.udpateById(id, {"items": prods, cart_timestamp})
         res.send("Producto eliminado")
     })
     .catch(err => {res.send(`Error: el carrito no existe - ${err}`)}) 

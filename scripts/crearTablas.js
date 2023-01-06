@@ -39,7 +39,7 @@ try {
 }
 
 //------------------------------------------
-// carrito en sqlite3
+// carrito en sqlite3 - NO FUNCIONA LA INSERCIÓN DEL ARRAY DE PRODUCTOS EN EL CARRITO
 
 try {
   // Borrar tabla si ya existe

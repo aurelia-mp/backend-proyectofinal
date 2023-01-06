@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 
-class Contenedor {
+class ContenedorArchivo {
     constructor(path){
         this.path = path
     }
@@ -24,10 +24,9 @@ class Contenedor {
 
     async getById(number){
         try{
+            number = parseInt(number)
             const dataFormateada= JSON.parse(await fs.readFile(this.path, 'utf-8'))
             const elementoFiltrado = dataFormateada.filter((elem) => elem.id===number)
-            // return (elementoFiltrado.length !== 0) ? JSON.stringify(elementoFiltrado, null, 2) 
-            //         : null
             return (elementoFiltrado.length !== 0) ? elementoFiltrado 
                     : null
         }
@@ -36,6 +35,7 @@ class Contenedor {
 
     async getIndexById(number){
         try{
+            number = parseInt(number)
             const dataFormateada= JSON.parse(await fs.readFile(this.path, 'utf-8'))
             const index = dataFormateada.findIndex((elem) => elem.id===number)
             if (index != -1) return index
@@ -44,10 +44,11 @@ class Contenedor {
         catch(err){console.log(err)}
     }
 
-    async udpateById(id, cambios){
+    async udpateById(number, cambios){
         try{
+            number = parseInt(number)
             const dataFormateada= JSON.parse(await fs.readFile(this.path, 'utf-8'))
-            const index = dataFormateada.findIndex((elem) => elem.id===id)     
+            const index = dataFormateada.findIndex((elem) => elem.id===number)     
             
             console.log(index)
 
@@ -104,4 +105,4 @@ class Contenedor {
     }
 }
 
-export default Contenedor
+export default ContenedorArchivo

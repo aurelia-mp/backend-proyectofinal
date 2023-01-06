@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: true}))
 
 // Routers
 app.use('/api/productos', routerProductos)
-app.use('/api/carrito', routerCarrito)
+app.use('/api/carritos', routerCarrito)
 
 //  Archivos estáticos
 app.use('/upload', express.static('upload'))
