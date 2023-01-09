@@ -1,8 +1,3 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -36,7 +31,6 @@ export default {
     sqlite3: {
         client: 'sqlite3',
         connection: {
-            // filename: __dirname + '/DB/ecommerce.sqlite'
             filename: '../DB/ecommerce.sqlite'
         },
         useNullAsDefault: true

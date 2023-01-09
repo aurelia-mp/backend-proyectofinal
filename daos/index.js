@@ -1,7 +1,7 @@
 let productosDao
 let carritosDao
 
-let tipoBdd = 'firebase'
+let tipoBdd = 'json'
 
 switch (tipoBdd) {
     case 'json':
