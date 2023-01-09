@@ -12,6 +12,12 @@ switch (tipoBdd) {
         carritosDao = new CarritosDaoArchivo()
         break
     case 'firebase':
+        const { default: ProductosDaoFirebase } = await import('./productos/ProductosDaoFirebase.js')
+        const { default: CarritosDaoFirebase } = await import('./carritos/CarritosDaoFirebase.js')
+
+        productosDao = new ProductosDaoFirebase()
+        carritosDao = new CarritosDaoFirebase()
+        break
 
         break
     case 'mongodb':
@@ -21,12 +27,12 @@ switch (tipoBdd) {
         productosDao = new ProductosDaoMongoDb()
         carritosDao = new CarritosDaoMongoDb()
         break
-    case 'mariadb':
+    // case 'mariadb':
 
-        break
-    case 'sqlite3':
+    //     break
+    // case 'sqlite3':
 
-        break
+    //     break
     default:
 
         break
