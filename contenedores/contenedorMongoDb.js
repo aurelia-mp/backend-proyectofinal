@@ -10,7 +10,9 @@ class ContenedorMongoDb {
 
     async save(objeto){
         try{
-            return await this.coleccion.insertMany(objeto)
+            let objetoGuardado = await this.coleccion.insertMany(objeto)
+            console.log(objetoGuardado)
+            return objetoGuardado[0]['_id']
         }
         catch(err){
             console.log('Error al guardar el producto' + err)
@@ -26,16 +28,6 @@ class ContenedorMongoDb {
         catch(err){console.log(err)}
     }
 
-    // async getIndexById(number){
-    //     try{
-    //         const dataFormateada= JSON.parse(await fs.readFile(this.path, 'utf-8'))
-    //         const index = dataFormateada.findIndex((elem) => elem.id===number)
-    //         if (index != -1) return index
-    //         else return null
-    //     }
-    //     catch(err){console.log(err)}
-    // }
-
     async udpateById(id, cambios){
         try{
             const registroActualizado = await this.coleccion.findByIdAndUpdate({_id: id}, cambios, {new:true})   
@@ -46,10 +38,10 @@ class ContenedorMongoDb {
 
     async getAll(){
         try{
-            const prods = await this.coleccion.find({}).lean() 
+            const registros = await this.coleccion.find({}).lean() 
             // .lean transforma el objeto Mongoose en json
-            console.log(prods)
-            return prods
+            console.log(registros)
+            return registros
         }
         catch(error){
             console.log("error de lectura: " + error)

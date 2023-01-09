@@ -4,12 +4,12 @@ class CarritosDaoMongoDb extends ContenedorMongoDb {
 
     constructor() {
         super('carritos', {
-            productos: { type: [], required: true }
+            items: { type: [], required: true }
         },
             {timestamp: true})
     }
 
-    async save(carrito = { productos: [] }) {
+    async save(carrito = { items: [] }) {
         return super.save(carrito)
     }
 }

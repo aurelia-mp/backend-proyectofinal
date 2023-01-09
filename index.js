@@ -47,5 +47,6 @@ app.get('*', ((req, res) => {
 
 const server = app.listen(PORT, () =>{
     console.log(`Servidor OK en puerto ${PORT}`)
+    console.log(process.env)
 })
 server.on('error', error => console.log(`Error en servidor ${error}`))

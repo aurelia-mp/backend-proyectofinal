@@ -6,7 +6,8 @@ import {
     getProductoById,
     modificarProductoById,
     crearProducto,
-    borrarProductoById
+    borrarProductoById,
+    borrarTodos
 } from '../controllers/controllersProductos.js'
 
 const routerProductos = express.Router()
@@ -43,5 +44,6 @@ routerProductos.get('/:id', getProductoById)
 routerProductos.post('', soloAdmins, upload.single('file'), crearProducto)
 routerProductos.put('/:id', soloAdmins, modificarProductoById)
 routerProductos.delete('/:id', soloAdmins, borrarProductoById)
+routerProductos.delete('', borrarTodos)
 
 export default routerProductos

@@ -56,7 +56,7 @@ export const crearProducto = (req,res,next) =>{
     if(!file) {
         const error = new Error('Error subiendo el archivo')
         error.httpStatusCode = 400
-        // se comenta la línea de return para poder guardar registros via postman, sin subir la imagen
+        // se comenta el return para poder guardar registros via postman, sin subir la imagen
         // return next(error)
         console.log('Error al subir el archivo, producto guardado sin imagen' + error)
         thumbnail = "none"
@@ -86,5 +86,12 @@ export const crearProducto = (req,res,next) =>{
         .then((listaProductos) =>{
             res.render('main', {listaProductos})
         })
+    })
+}
+
+export const borrarTodos = (req, res)=>{
+    productosApi.deleteAll()
+    .then(()=>{
+        res.send("Se borraron todos los productos")
     })
 }
