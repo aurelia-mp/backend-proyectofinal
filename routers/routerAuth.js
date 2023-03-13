@@ -6,6 +6,7 @@ const LocalStrategy = Strategy;
 import * as model from '../models/users.js'
 import bcrypt from 'bcrypt'
 // import { CPU_CORES } from '../server.js';
+import enviarEmail from '../scripts/mailer.js';
 
 // FUNCIONES
 function isAuth(req,res,next){
@@ -100,6 +101,7 @@ routerAuth.post('/register', async (req,res) =>{
     saveUser(newUser)
     .then((res)=>{
         console.log(res)
+        enviarEmail(newUser)
     })
     
     // req.session.nombre = nombre
@@ -113,6 +115,7 @@ routerAuth.post(
         failureRedirect: '/login-error'
     }),
     (req, res) => {
+
         res.cookie('userEmail', req.session.passport.user)
     }
 )
