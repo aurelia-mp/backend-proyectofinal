@@ -87,11 +87,13 @@ routerAuth.get('/register',(req,res)=>{
 })
 
 routerAuth.post('/register', async (req,res) =>{
-    let{ username, email, password } = req.body
-    console.log(username, email, password)
+    console.log(req.body)
+    let{ username, email, tel, password } = req.body
+    console.log(username, email, tel, password)
     const newUser = {
         username: username,
         email: email,
+        tel: tel,
         password: await generateHashPassword(password)
     }
     
