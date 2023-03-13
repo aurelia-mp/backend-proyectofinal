@@ -1,5 +1,11 @@
 import dotenv from 'dotenv'
+import MongoStore from 'connect-mongo'
 dotenv.config()
+
+const advancedOptions = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}
 
 export default {
     fileSystem: {
@@ -43,6 +49,21 @@ export default {
             password: 'root',
             database: 'coderhouse_01',
             port: 8889
+        }
+    },
+    session:{
+        store: MongoStore.create({
+            // local
+            mongoUrl: process.env.MONGO_URL,
+            mongoOptions: advancedOptions,
+            ttl:60,
+            collectionName: process.env.MONGODB_COLLECTION_NAME
+        }),
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 600000
         }
     }
 }

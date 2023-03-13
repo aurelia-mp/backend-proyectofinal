@@ -19,7 +19,6 @@ switch (tipoBdd) {
         carritosDao = new CarritosDaoFirebase()
         break
 
-        break
     case 'mongodb':
         const { default: ProductosDaoMongoDb } = await import('./productos/ProductosDaoMongoDb.js')
         const { default: CarritosDaoMongoDb } = await import('./carritos/CarritosDaoMongoDb.js')
