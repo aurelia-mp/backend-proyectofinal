@@ -17,7 +17,6 @@ export default async function enviarWA(numero){
         // cuerpo del mensaje
         body: 'Su pedido ha sido recibido y está en proceso de preparación',
         from: 'whatsapp:+14155238886', // Número de Twilio - lo encontramos en el Sandbox
-        //to:'whatsapp:+5491169458370',
         to: `whatsapp:${numero}`
     }
     try{
