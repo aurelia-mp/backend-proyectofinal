@@ -12,8 +12,7 @@ const transporter = createTransport({
 });
 
 
-
-export default async function enviarEmail(datosUsuario){
+async function enviarEmail(datosUsuario){
     const mailOptions = {
         from: 'Servidor Node.js',
         to: TEST_MAIL,
@@ -33,4 +32,32 @@ export default async function enviarEmail(datosUsuario){
      }
      
 }
+
+async function enviarEmailPedido(id, items, usuario){   
+    let listaHTMLItems = "<ul>"
+    items.forEach((item) =>{
+        listaHTMLItems = listaHTMLItems + "<li>" + item.nombre + "</li>"
+    })
+    listaHTMLItems = listaHTMLItems + "</ul>"
+
+    let username
+    usuario && (username = usuario.username)
+
+    const mailOptions = {
+        from: 'Servidor Node.js',
+        to: TEST_MAIL,
+        subject: `Nuevo pedido de ${username}`,
+        html: `Nueva compra con los siguientes items: ${listaHTMLItems}`
+     }
+    try {
+        const info = await transporter.sendMail(mailOptions)
+     } catch (err) {
+        console.log(err)
+     }
+     
+}
+
+
+
+export {enviarEmail, enviarEmailPedido}
 

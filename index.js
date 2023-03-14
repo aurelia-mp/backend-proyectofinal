@@ -2,7 +2,7 @@ import express from "express";
 import session from 'express-session'
 import routerProductos from "./routers/routerProductos.js";
 import routerCarrito from "./routers/routerCarrito.js";
-import routerAuth from "./routers/routerAuth.js";
+import {routerAuth} from "./routers/routerAuth.js";
 import handlebars from 'express-handlebars'
 import config from './config.js'
 import mongoose from "mongoose";
@@ -23,13 +23,13 @@ app.use(express.urlencoded({extended: true}))
 app.use(session(config.session))
 
 // Mongo DB
-const URL = 'mongodb://localhost:27017/usuarios'
-mongoose.set('strictQuery', true)
-const advancedOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}
-await mongoose.connect(URL, advancedOptions)
+// const URL = 'mongodb://localhost:27017/usuarios'
+// mongoose.set('strictQuery', true)
+// const advancedOptions = {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// }
+// await mongoose.connect(URL, advancedOptions)
 
 // Routers
 app.use('/api/productos', routerProductos)

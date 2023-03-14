@@ -2,6 +2,11 @@ import {
     productosDao as productosApi,
     carritosDao as carritosApi
 } from '../daos/index.js'
+import { enviarEmailPedido } from '../scripts/mailer.js'
+import enviarWA from '../scripts/twilio.js';
+import { usuarioActual } from '../routers/routerAuth.js';
+
+
 
 export const crearCarrito = (req,res) =>{
     // crear  un carrito vacío y devuelve  el id
@@ -11,7 +16,11 @@ export const crearCarrito = (req,res) =>{
         cart_timestamp: timestamp
     } 
     carritosApi.save(nuevoCarrito)
-    .then(id => res.send(`Carrito creado con el id ${id}`))
+    .then((id) => 
+        {
+            res.send(`Carrito creado con el id ${id}`)
+        })
+    
 }
 
 export const borrarCarrito = (req,res) =>{
@@ -104,3 +113,22 @@ export const borrarItemDelCarrito = (req,res) =>{
     })
     .catch(err => {res.send(`Error: el carrito no existe - ${err}`)}) 
 }
+
+export const enviarConfirmacion = async (req, res) =>{
+    let id = req.params.id
+    let numero
+    usuarioActual && (numero = usuarioActual.tel)
+
+    // Envío de mail
+    let carrito = await carritosApi.getById(id)
+    carrito = JSON.stringify(carrito)
+    let items = JSON.parse(carrito)["items"]
+    enviarEmailPedido(id,items,usuarioActual)
+
+    // Envío de WA
+    enviarWA(numero)
+    res.send("Confirmaciones enviadas")
+}
+       
+    
+    

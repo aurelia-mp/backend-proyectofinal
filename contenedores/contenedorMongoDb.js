@@ -1,3 +1,4 @@
+import { json } from 'express'
 import mongoose, { model } from 'mongoose'
 import config from '../config.js'
 

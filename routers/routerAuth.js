@@ -6,7 +6,7 @@ const LocalStrategy = Strategy;
 import * as model from '../models/users.js'
 import bcrypt from 'bcrypt'
 // import { CPU_CORES } from '../server.js';
-import enviarEmail from '../scripts/mailer.js';
+import {enviarEmail} from '../scripts/mailer.js';
 
 // FUNCIONES
 function isAuth(req,res,next){
@@ -25,10 +25,12 @@ async function saveUser(user){
 
 
 // Passport local
+let usuarioActual
+
 passport.use('local', new LocalStrategy(
     async function(username, password, done){
         const existeUsuario = await model.usuarios.findOne({email: username})
-
+        usuarioActual = existeUsuario
         if(!existeUsuario){
             console.log('usuario no encontrado')
             return done(null, false)
@@ -60,6 +62,7 @@ routerAuth.use(passport.initialize())
 routerAuth.use(passport.session());
 
 routerAuth.get('/', isAuth, (req,res) =>{
+    usuarioActual = req.session.passport.user
     const nombre = req.session.passport.user.username
     const email = req.session.passport.user.email
     res.render('main',  {nombre: nombre, email: email })
@@ -86,6 +89,11 @@ routerAuth.get('/login-error', (req, res) => {
 routerAuth.get('/register',(req,res)=>{
     res.render('register')
 })
+
+routerAuth.get('/datosPersonales',(req,res)=>{
+    res.json(usuarioActual)
+})
+
 
 routerAuth.post('/register', async (req,res) =>{
     console.log(req.body)
@@ -152,4 +160,4 @@ async function verifyPass(usuario, password) {
     return match
 }
 
-export default routerAuth
+export {routerAuth, usuarioActual}
