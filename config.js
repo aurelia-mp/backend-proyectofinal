@@ -1,6 +1,18 @@
 import dotenv from 'dotenv'
 import MongoStore from 'connect-mongo'
+import parseArgs from 'minimist'
 dotenv.config()
+
+const argv = parseArgs(process.argv.slice(2), {
+    alias: {
+        p: 'port',
+        m: 'mode'
+    },
+    default: {
+        port: 8090,
+        mode: 'FORK'
+    }
+})
 
 const advancedOptions = {
     useNewUrlParser: true,
@@ -8,6 +20,8 @@ const advancedOptions = {
 }
 
 export default {
+    PORT: argv.port,
+    mode: argv.mode,
     fileSystem: {
         path: './DB'
     },

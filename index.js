@@ -6,6 +6,8 @@ import {routerAuth} from "./routers/routerAuth.js";
 import handlebars from 'express-handlebars'
 import config from './config.js'
 import { logInfo, logWarn } from './scripts/loggers/loggers.js'
+import cluster from 'cluster'
+import os from 'os'
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -13,8 +15,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express()
-
-const PORT = process.env.PORT || 8090
 
 // Middleware
 app.use(express.json())
@@ -75,7 +75,25 @@ app.get('*', ((req, res) => {
     res.send({ status: "error: -2", description: `ruta ${req.url} método ${req.method} no implementada` });
 }))
 
-const server = app.listen(PORT, () =>{
-    console.log(`Servidor OK en puerto ${PORT}`)
-})
-server.on('error', error => console.log(`Error en servidor ${error}`))
+// CLUSTER
+export const CPU_CORES = os.cpus().length
+if (config.mode == 'CLUSTER' && cluster.isPrimary) {
+    console.log('Cantidad de cores: ', CPU_CORES)
+    
+    for (let i = 0; i < CPU_CORES; i++) {
+        cluster.fork()
+    }
+    
+    cluster.on('exit', worker => {
+        console.log(`Worker finalizó proceso ${process.pid} ${worker.id} ${worker.pid} finalizó el ${new Date().toLocaleString}`)
+        cluster.fork()
+    })
+} else {
+    const server = app.listen(config.PORT, err => {
+        if (!err) console.log(`Servidor http escuchando en el puerto ${config.PORT} - PID: ${process.pid}`)
+    })
+    server.on('error', error => {
+        console.log(`Error en servidor ${error}`)
+        logError(error)    
+    })
+}
