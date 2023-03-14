@@ -5,6 +5,7 @@ import {
 import { enviarEmailPedido } from '../scripts/mailer.js'
 import enviarWA from '../scripts/twilio.js';
 import { usuarioActual } from '../routers/routerAuth.js';
+import { logWarn } from '../scripts/loggers/loggers.js'
 
 
 
@@ -41,6 +42,7 @@ export const getCarrito = (req,res) => {
         res.json({"Productos en el carrito:" : prods})
     })
     .catch((err) =>{
+        logWarn(err)
         res.send("El carrito requerido no existe" + err)
     })
 }
@@ -69,6 +71,7 @@ export const agregarItemAlCarrito  = (req,res)  =>{
             res.send("Carrito actualizado")
         })
         .catch((err) =>{
+            logWarn(err)
             res.send("Error al actualizar el carrito" + err)
         })
     })
@@ -111,7 +114,10 @@ export const borrarItemDelCarrito = (req,res) =>{
         carritosApi.udpateById(id, {"items": prods, cart_timestamp})
         res.send("Producto eliminado")
     })
-    .catch(err => {res.send(`Error: el carrito no existe - ${err}`)}) 
+    .catch(err => {
+        logWarn(err)
+        res.send(`Error: el carrito no existe - ${err}`)
+    }) 
 }
 
 export const enviarConfirmacion = async (req, res) =>{

@@ -5,7 +5,7 @@ import routerCarrito from "./routers/routerCarrito.js";
 import {routerAuth} from "./routers/routerAuth.js";
 import handlebars from 'express-handlebars'
 import config from './config.js'
-import mongoose from "mongoose";
+import { logInfo, logWarn } from './scripts/loggers/loggers.js'
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -31,10 +31,24 @@ app.use(session(config.session))
 // }
 // await mongoose.connect(URL, advancedOptions)
 
+//Loggeo de todas las peticiones
+
+app.use((req, res, next) =>{
+    logInfo(`${req.method} ${req.url}`)
+    next()
+})
+
 // Routers
 app.use('/api/productos', routerProductos)
 app.use('/api/carritos', routerCarrito)
 app.use('/', routerAuth)
+
+// Loggeo de rutas inexistentes
+
+app.use('*', (req, res, next) => {
+    logWarn(`ruta ${req.originalUrl} método ${req.method} no implementada`)
+    next()
+})
 
 //  Archivos estáticos
 app.use('/upload', express.static('upload'))

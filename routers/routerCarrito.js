@@ -1,5 +1,4 @@
 import express from 'express'
-import { enviarEmailPedido } from '../scripts/mailer.js'
 
 
 import { 

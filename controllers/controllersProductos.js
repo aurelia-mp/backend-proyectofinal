@@ -2,12 +2,16 @@ import {
     productosDao as productosApi,
 } from '../daos/index.js'
 
+import { logError } from '../scripts/loggers/loggers.js'
+
+
 export const getProductos = (req,res) =>{
     productosApi.getAll()
     .then(productos=>{
         res.render('products', {productos: productos})
     })
     .catch(err=>{
+        logError(err)
         res.send(err)
     })
 }
@@ -55,6 +59,7 @@ export const crearProducto = (req,res,next) =>{
 
     if(!file) {
         const error = new Error('Error subiendo el archivo')
+        logError(error)
         error.httpStatusCode = 400
         // se comenta el return para poder guardar registros via postman, sin subir la imagen
         // return next(error)
@@ -76,6 +81,7 @@ export const crearProducto = (req,res,next) =>{
     if(!req.body.nombre || !req.body.precio) {
         const error = new Error('Faltan campos obligarios')
         error.httpStatusCode = 400
+        logWarn(err)
         return next(error)
     }
     productosApi.save(producto)

@@ -1,0 +1,10 @@
+[2023-03-14T14:13:12.999] [ERROR] error - Error: Error subiendo el archivo
+    at crearProducto (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/controllers/controllersProductos.js:61:23)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at done (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/multer/lib/make-middleware.js:45:7)
+    at indicateDone (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/multer/lib/make-middleware.js:49:68)
+    at Multipart.<anonymous> (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/multer/lib/make-middleware.js:166:7)
+    at Multipart.emit (node:events:513:28)
+    at emitCloseNT (node:internal/streams/destroy:132:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)

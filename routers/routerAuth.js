@@ -7,6 +7,9 @@ import * as model from '../models/users.js'
 import bcrypt from 'bcrypt'
 // import { CPU_CORES } from '../server.js';
 import {enviarEmail} from '../scripts/mailer.js';
+import { logError } from '../scripts/loggers/loggers.js'
+
+
 
 // FUNCIONES
 function isAuth(req,res,next){
@@ -54,7 +57,10 @@ passport.deserializeUser((nombre, done) => {
     .then((res=>{
         done(null, res)
     }))
-    .catch((err) =>{console.log('error desde deserializacion' + err)})
+    .catch((err) =>{
+        logError(err.message)
+        console.log('error desde deserializacion' + err)
+    })
 });
 
 // RUTAS
@@ -72,6 +78,7 @@ routerAuth.get('/logout', (req, res) => {
     res.render('logout', {nombre: req.session.passport.user.username})
     req.session.destroy(err=>{
         if(err){
+            logError(err.message)
             res.json({status: 'Error al desloggearse', body: err})
         }
     })
