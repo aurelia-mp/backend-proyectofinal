@@ -6,8 +6,6 @@ dotenv.config()
 // SID Y TOKEN con variables de entorno
 // Los datos se encuentran en el dashboard de Twilio
 const accountSid = process.env.TWILIO_ACCOUNT_SID
-// const accountSid ="ACbc72478c7eb5a5c66615ab591496474b"
-// const authToken="aee77d0d4ee3aa54b0c3f30b4601beed"
 const authToken = process.env.TWILIO_AUTH_TOKEN
 
 // Inicializamos Twilio
