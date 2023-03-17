@@ -1,10 +1,10 @@
 import express from "express";
 import session from 'express-session'
-import routerProductos from "./routers/routerProductos.js";
-import routerCarrito from "./routers/routerCarrito.js";
-import {routerAuth} from "./routers/routerAuth.js";
+import routerProductos from "./src/routers/routerProductos.js";
+import routerCarrito from "./src/routers/routerCarrito.js";
+import {routerAuth} from "./src/routers/routerAuth.js";
 import handlebars from 'express-handlebars'
-import config from './config.js'
+import config from './src/config.js'
 import { logInfo, logWarn } from './scripts/loggers/loggers.js'
 import cluster from 'cluster'
 import os from 'os'

@@ -2,10 +2,10 @@ import {
     productosDao as productosApi,
     carritosDao as carritosApi
 } from '../daos/index.js'
-import { enviarEmailPedido } from '../scripts/mailer.js'
-import enviarWA from '../scripts/twilio.js';
+import { enviarEmailPedido } from '../../scripts/mailer.js'
+import enviarWA from '../../scripts/twilio.js';
 import { usuarioActual } from '../routers/routerAuth.js';
-import { logWarn } from '../scripts/loggers/loggers.js'
+import { logWarn } from '../../scripts/loggers/loggers.js'
 
 
 

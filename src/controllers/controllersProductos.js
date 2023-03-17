@@ -2,7 +2,7 @@ import {
     productosDao as productosApi,
 } from '../daos/index.js'
 
-import { logError } from '../scripts/loggers/loggers.js'
+import { logError } from '../../scripts/loggers/loggers.js'
 
 
 export const getProductos = (req,res) =>{

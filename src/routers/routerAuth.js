@@ -6,8 +6,8 @@ const LocalStrategy = Strategy;
 import * as model from '../models/users.js'
 import bcrypt from 'bcrypt'
 // import { CPU_CORES } from '../server.js';
-import {enviarEmail} from '../scripts/mailer.js';
-import { logError } from '../scripts/loggers/loggers.js'
+import {enviarEmail} from '../../scripts/mailer.js';
+import { logError } from '../../scripts/loggers/loggers.js'
 
 
 
