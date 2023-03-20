@@ -4,10 +4,11 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 const LocalStrategy = Strategy;
 import * as model from '../models/users.js'
-import bcrypt from 'bcrypt'
-// import { CPU_CORES } from '../server.js';
-import {enviarEmail} from '../../scripts/mailer.js';
+import { verifyPass } from '../bcrypt.js';
+
 import { logError } from '../../scripts/loggers/loggers.js'
+import {mostrarDatosProcesos, autenticarUsuario, desloggearUsuario, user, mostrarDatosUsuario, getLogin, getLoginError, getRegister, postRegister, postLogin } from '../controllers/controllersAuth.js';
+
 
 
 
@@ -21,19 +22,14 @@ function isAuth(req,res,next){
     }
 }
 
-async function saveUser(user){
-    const userSave = await model.usuarios.insertMany(user)
-    return userSave
-}
-
-
 // Passport local
 let usuarioActual
+let idCarrito
 
 passport.use('local', new LocalStrategy(
     async function(username, password, done){
         const existeUsuario = await model.usuarios.findOne({email: username})
-        usuarioActual = existeUsuario
+        // usuarioActual = existeUsuario
         if(!existeUsuario){
             console.log('usuario no encontrado')
             return done(null, false)
@@ -67,104 +63,24 @@ passport.deserializeUser((nombre, done) => {
 routerAuth.use(passport.initialize())
 routerAuth.use(passport.session());
 
-routerAuth.get('/', isAuth, (req,res) =>{
-    usuarioActual = req.session.passport.user
-    const nombre = req.session.passport.user.username
-    const email = req.session.passport.user.email
-    res.render('main',  {nombre: nombre, email: email })
-})
-
-routerAuth.get('/logout', (req, res) => {
-    res.render('logout', {nombre: req.session.passport.user.username})
-    req.session.destroy(err=>{
-        if(err){
-            logError(err.message)
-            res.json({status: 'Error al desloggearse', body: err})
-        }
-    })
-    
-})
-
-routerAuth.get('/login', (req, res) => {
-    res.render('login')
-})
-
-routerAuth.get('/login-error', (req, res) => {
-    res.render('login-error');
-})
-
-routerAuth.get('/register',(req,res)=>{
-    res.render('register')
-})
-
-routerAuth.get('/datosPersonales',(req,res)=>{
-    res.json(usuarioActual)
-})
-
-
-routerAuth.post('/register', async (req,res) =>{
-    console.log(req.body)
-    let{ username, email, tel, password } = req.body
-    console.log(username, email, tel, password)
-    const newUser = {
-        username: username,
-        email: email,
-        tel: tel,
-        password: await generateHashPassword(password)
-    }
-    
-    saveUser(newUser)
-    .then((res)=>{
-        console.log(res)
-        enviarEmail(newUser)
-    })
-    
-    // req.session.nombre = nombre
-    res.redirect('/login');
-})
-
+routerAuth.get('/', isAuth, autenticarUsuario)
+routerAuth.get('/logout', desloggearUsuario)
+routerAuth.get('/login', getLogin)
+routerAuth.get('/login-error', getLoginError)
+routerAuth.get('/register',getRegister)
+routerAuth.get('/datosPersonales', mostrarDatosUsuario)
+routerAuth.post('/register',postRegister)
 routerAuth.post(
     '/login', 
     passport.authenticate('local', {
         successRedirect:'/', 
         failureRedirect: '/login-error'
     }),
-    (req, res) => {
-
-        res.cookie('userEmail', req.session.passport.user)
-    }
+    postLogin
 )
 
 // PROCESS: Ruta info con datos del proceso
-routerAuth.get('/info', (req,res)=>{
-    const datos = {
-        argumentos: process.argv.slice(2),
-        plataforma: process.platform,
-        version: process.version,
-        rss: process.memoryUsage(),
-        path: process.execPath,
-        pid: process.pid,
-        carpeta: process.cwd(),
-        procesadores: CPU_CORES
-    }
-    console.log(datos)
-    // res.json(datos)
-    res.render('info', {datos})
-})
+routerAuth.get('/info', mostrarDatosProcesos)
 
 
-
-// Metodos de Auth con Bcrypt
-async function generateHashPassword(password) {
-    const hashPassword = await bcrypt.hash(password, 10)
-    return hashPassword
-}
-
-async function verifyPass(usuario, password) {
-    const match = await bcrypt.compare(password, usuario.password)
-    console.log(`pass login: ${password} || pass hash: ${usuario.password}`)
-    console.log(match)
-    return match
-}
-
-export {routerAuth, usuarioActual}
+export {routerAuth, usuarioActual, idCarrito}

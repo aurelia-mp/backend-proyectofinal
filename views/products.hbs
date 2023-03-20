@@ -9,7 +9,8 @@
               <h5 class="card-title">{{this.nombre}}</h5>
               <p class="">{{this.descripcion}}</p>
               <p class="card-text">Precio: AR${{this.precio}}</p>
-              <button class="btn btn-primary">Comprar</button>
+              <button class="btn btn-primary btn-compra" data-target=`{{this._id}}`>Comprar</button>
+              
             </div>
           </div>
     {{/each}}

@@ -19,7 +19,9 @@ export const crearCarrito = (req,res) =>{
     carritosApi.save(nuevoCarrito)
     .then((id) => 
         {
-            res.send(`Carrito creado con el id ${id}`)
+            console.log(id)
+            // res.send(`Carrito creado con el id ${id}`)
+            res.send(id)
         })
     
 }
