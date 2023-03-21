@@ -7,10 +7,11 @@ import enviarWA from '../../scripts/twilio.js';
 import { usuarioActual } from '../routers/routerAuth.js';
 import { logWarn } from '../../scripts/loggers/loggers.js'
 
+let carritoEnCurso
 
-
-export const crearCarrito = (req,res) =>{
+const crearCarrito = (req,res) =>{
     // crear  un carrito vacío y devuelve  el id
+     // Redirige a la página con los productos
     let timestamp = Date.now()
     let nuevoCarrito = {
         items: [],
@@ -19,22 +20,22 @@ export const crearCarrito = (req,res) =>{
     carritosApi.save(nuevoCarrito)
     .then((id) => 
         {
-            console.log(id)
+            carritoEnCurso = id
+            res.redirect(303, '/api/productos')
             // res.send(`Carrito creado con el id ${id}`)
-            res.send(id)
         })
-    
 }
 
-export const borrarCarrito = (req,res) =>{
+const borrarCarrito = (req,res) =>{
     let id = req.params.id
     carritosApi.deleteById(id)
     .then(resp =>{
+        carritoEnCurso = null
         res.send('Carrito eliminado')
     })
 }
 
-export const getCarrito = (req,res) => {
+const getCarrito = (req,res) => {
     //  Lista los productos del carrito
     let id= req.params.id
     carritosApi.getById(id)
@@ -49,7 +50,7 @@ export const getCarrito = (req,res) => {
     })
 }
 
-export const agregarItemAlCarrito  = (req,res)  =>{
+const agregarItemAlCarrito  = (req,res)  =>{
     // Carga un producto a un carrito con el id de producto
     let id = req.params.id
     let id_prod =req.params.id_prod
@@ -65,9 +66,11 @@ export const agregarItemAlCarrito  = (req,res)  =>{
         console.log(productoNuevo)
         carritosApi.getById(id)
         .then((carritoAActualizar) =>{
-            let prods= carritoAActualizar[0]["items"]
-            prods.push(productoNuevo[0])
-            console.log('array actualizado :' + prods)
+            let carrito = JSON.stringify(carritoAActualizar)
+            let prods  = JSON.parse(carrito)["items"]
+            // console.log("Carrito a actualizar" + carritoAActualizar)
+            // let prods= carritoAActualizar[0]["items"]
+            prods.push(productoNuevo)
             let cart_timestamp = Date.now()
             carritosApi.udpateById(id, {"items": prods, cart_timestamp})
             res.send("Carrito actualizado")
@@ -79,7 +82,7 @@ export const agregarItemAlCarrito  = (req,res)  =>{
     })
 }
 
-export const agregarVariosItemsAlCarrito  = (req, res) =>{
+const agregarVariosItemsAlCarrito  = (req, res) =>{
     // Carga un nuevo array de productos a un carrito
     let prods = req.body
     let id = req.params.id
@@ -97,7 +100,7 @@ export const agregarVariosItemsAlCarrito  = (req, res) =>{
     })
 }
 
-export const borrarItemDelCarrito = (req,res) =>{
+const borrarItemDelCarrito = (req,res) =>{
     let id = req.params.id
     let id_prod = req.params.id_prod
     // parsea el id producto solo si es un numero-  lo deja igual si es un string
@@ -122,7 +125,7 @@ export const borrarItemDelCarrito = (req,res) =>{
     }) 
 }
 
-export const enviarConfirmacion = async (req, res) =>{
+const enviarConfirmacion = async (req, res) =>{
     let id = req.params.id
     let numero
     usuarioActual && (numero = usuarioActual.tel)
@@ -139,4 +142,14 @@ export const enviarConfirmacion = async (req, res) =>{
 }
        
     
-    
+export {
+    carritoEnCurso,
+    crearCarrito,
+    borrarCarrito,
+    getCarrito,
+    agregarVariosItemsAlCarrito,
+    agregarItemAlCarrito,
+    borrarItemDelCarrito,
+    enviarConfirmacion
+
+}

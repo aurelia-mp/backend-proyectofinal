@@ -1,6 +1,10 @@
 // import { enviarEmailPedido } from "../../scripts/mailer";
 
+
+
 const agregarEventosBotones = () =>{
+    
+
     const addToCardButtons = document.getElementsByClassName('btn-compra')
     console.log(addToCardButtons.length)
     

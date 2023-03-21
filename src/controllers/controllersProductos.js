@@ -3,12 +3,16 @@ import {
 } from '../daos/index.js'
 
 import { logError } from '../../scripts/loggers/loggers.js'
+import { carritoEnCurso } from './controllersCarrito.js'
 
+let idCarrito
 
 export const getProductos = (req,res) =>{
     productosApi.getAll()
     .then(productos=>{
-        res.render('products', {productos: productos})
+        carritoEnCurso && (idCarrito = carritoEnCurso)
+        console.log("idCarrito desde Controller " + idCarrito)
+        res.render('products', {productos: productos, idCarrito: idCarrito || null })
     })
     .catch(err=>{
         logError(err)

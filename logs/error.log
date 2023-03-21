@@ -8,3 +8,9 @@
     at Multipart.emit (node:events:513:28)
     at emitCloseNT (node:internal/streams/destroy:132:10)
     at process.processTicksAndRejections (node:internal/process/task_queues:81:21)
+[2023-03-20T14:52:07.230] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'render')
+    at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:11:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-03-20T15:30:16.856] [ERROR] error - TypeError: Assignment to constant variable.
+    at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:13:38
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
