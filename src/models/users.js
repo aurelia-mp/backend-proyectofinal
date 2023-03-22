@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import config from '../config.js'
+
+await mongoose.connect(config.mongodb.cnxStr, config.mongodb.options)
 
 const users = "usuarios"
 const Schema = mongoose.Schema
