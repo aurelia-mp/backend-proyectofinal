@@ -4,8 +4,7 @@ import CustomError from '../clases/CustomError.class.js'
 import MongoDBClient from '../clases/MongoDBClient.class.js'
 import {logInfo, logWarn, logError} from '../../scripts/loggers/loggers.js'
 
-// NO FUNCIONA EL CONNECT - SE TILDA TODO SI COMENTO LA LÍNEA SIGUIENTE
-// await mongoose.connect(config.mongodb.cnxStr, config.mongodb.options)
+await mongoose.connect(config.mongodb.cnxStr, config.mongodb.options)
 
 class ContenedorMongoDb {
     constructor(nombreColeccion, esquema) {
@@ -15,7 +14,7 @@ class ContenedorMongoDb {
 
     async save(objeto){
         try{
-            this.connexion.connect()
+            // this.connexion.connect()
 
             let objetoGuardado = await this.coleccion.insertMany(objeto)
             console.log(objetoGuardado)
@@ -24,13 +23,13 @@ class ContenedorMongoDb {
         catch(err){
             console.log('Error al guardar el producto' + err)
         } finally {
-            this.connexion.disconnect()
+            // this.connexion.disconnect()
         }
     }
 
     async getById(number){
         try{
-            this.connexion.connect()
+            // this.connexion.connect()
 
             const registroBuscado = await this.coleccion.findById({_id: number}).lean()
             return registroBuscado ? registroBuscado 
@@ -38,7 +37,7 @@ class ContenedorMongoDb {
         } catch(err){
             console.log(err)
         } finally {
-            this.connexion.disconnect()
+            // this.connexion.disconnect()
         }
     }
 
@@ -51,13 +50,13 @@ class ContenedorMongoDb {
         } catch(err){
             console.log(err)
         } finally {
-            this.connexion.disconnect()
+            // this.connexion.disconnect()
         }
     }
 
     async getAll(){
         try{
-            this.connexion.connect()
+           // this.connexion.connect()
 
             const registros = await this.coleccion.find({}).lean() 
             // .lean transforma el objeto Mongoose en json
@@ -66,27 +65,27 @@ class ContenedorMongoDb {
         } catch(error){
             console.log("error de lectura: " + error)
         } finally {
-            this.connexion.disconnect()
+            // this.connexion.disconnect()
         }
 
     }
     
     async deleteById(number){
         try{
-            this.connexion.connect()
+           // this.connexion.connect()
 
             let itemABorrar = await this.coleccion.findByIdAndDelete({_id: number})
             return itemABorrar ?  await this.coleccion.find({}) : null
         } catch(err){
             console.log('error al borrar:' + err)
         } finally {
-            this.connexion.disconnect()
+           // this.connexion.disconnect()
         }
     }
 
     async deleteAll(){
         try{
-            this.connexion.connect()
+            // this.connexion.connect()
 
             await this.coleccion.deleteMany({})
             console.log('Todos los registros fueron borrados')
@@ -95,7 +94,7 @@ class ContenedorMongoDb {
         catch(err){
             console.log('Error al borrar' + err)
         } finally {
-            this.connexion.disconnect()
+            // this.connexion.disconnect()
         }
     }
 }
