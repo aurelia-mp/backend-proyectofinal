@@ -1,6 +1,9 @@
 import { resolveInclude } from "ejs";
 import admin from "firebase-admin"
 import config from '../config.js'
+import {logError} from '../../scripts/loggers/loggers.js'
+import CustomError from '../clases/CustomError.class.js'
+
 
 admin.initializeApp({
     credential: admin.credential.cert(config.firebase)
@@ -29,7 +32,9 @@ class ContenedorFirebase{
             return id
         }
         catch(err){
-            console.log('Error al guardar el producto' + err)
+            const custError = new CustomError(500, 'Error al guardar', err)
+            logError(custError)
+            throw custError
         }
     }
 
@@ -42,8 +47,11 @@ class ContenedorFirebase{
             let arrayRespuesta = []
             arrayRespuesta.push(registro.data())
             return registro? arrayRespuesta : null 
+        } catch(err){
+            const custError = new CustomError(500, 'Error con el método getById', err)
+            logError(custError)
+            throw custError
         }
-        catch(err){console.log(err)}
     }
 
     async udpateById(id, cambios){
@@ -54,7 +62,11 @@ class ContenedorFirebase{
             let registroActualizado = await doc.get()
             return registro ? registroActualizado.data() : null
         }
-        catch(err){console.log(err)}
+        catch(err){
+            const custError = new CustomError(500, 'Error con el método updateById', err)
+            logError(custError)
+            throw custError
+        }
     }
 
     async getAll(){
@@ -69,7 +81,9 @@ class ContenedorFirebase{
             return registrosFormateados
         }
         catch(error){
-            console.log("error de lectura: " + error)
+            const custError = new CustomError(500, 'Error con el método getAll', err)
+            logError(custError)
+            throw custError
         }
 
     }
@@ -79,8 +93,11 @@ class ContenedorFirebase{
             const doc = this.coleccion.doc(number)
             let docBorrado = await doc.delete()
             return docBorrado ? docBorrado  : null
+        }catch(err){
+            const custError = new CustomError(500, 'Error con el método deleteById', err)
+            logError(custError)
+            throw custError
         }
-        catch(err){console.log('error al borrar:' + err)}
     }
 
     async deleteAll(){
@@ -103,7 +120,9 @@ class ContenedorFirebase{
             return
         }
         catch(err){
-            console.log('Error al borrar' + err)
+            const custError = new CustomError(500, 'Error con el método deleteAll', err)
+            logError(custError)
+            throw custError
         }
     }
 }

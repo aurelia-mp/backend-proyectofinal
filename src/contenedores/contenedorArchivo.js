@@ -1,4 +1,6 @@
 import fs from 'fs/promises'
+import CustomError from '../clases/CustomError.class.js'
+import {logInfo, logError} from '../../scripts/loggers/loggers.js'
 
 class ContenedorArchivo {
     constructor(path){
@@ -18,7 +20,9 @@ class ContenedorArchivo {
             return id
         }
         catch(err){
-            console.log(err)
+            const custError = new CustomError(500, 'Error al guardar', err)
+            logError(custError)
+            throw custError
         }
     }
 
@@ -29,8 +33,11 @@ class ContenedorArchivo {
             const elementoFiltrado = dataFormateada.filter((elem) => elem.id===number)
             return (elementoFiltrado.length !== 0) ? elementoFiltrado 
                     : null
+        } catch(err){
+            const custError = new CustomError(500, 'Error con el método getById', err)
+            logError(custError)
+            throw custError
         }
-        catch(err){console.log(err)}
     }
 
     async getIndexById(number){
@@ -40,8 +47,11 @@ class ContenedorArchivo {
             const index = dataFormateada.findIndex((elem) => elem.id===number)
             if (index != -1) return index
             else return null
+        } catch(err){
+            const custError = new CustomError(500, 'Error con el método getIndexById', err)
+            logError(custError)
+            throw custError
         }
-        catch(err){console.log(err)}
     }
 
     async udpateById(number, cambios){
@@ -64,8 +74,11 @@ class ContenedorArchivo {
             dataFormateada[index] = elementoActualizado
             await fs.writeFile(this.path, JSON.stringify(dataFormateada, null, 2))
             return          
+        } catch(err){
+            const custError = new CustomError(500, 'Error con el método udpateById', err)
+            logError(custError)
+            throw custError
         }
-        catch(err){console.log(err)}
     }
 
     async getAll(){
@@ -73,10 +86,11 @@ class ContenedorArchivo {
             const dataFormateada= JSON.parse(await fs.readFile(this.path, 'utf-8'))
             return dataFormateada
         }
-        catch(error){
-            console.log("error de lectura")
+        catch(err){
+            const custError = new CustomError(500, 'Error con el método getAll', err)
+            logError(custError)
+            throw custError
         }
-
     }
     
     async deleteById(number){
@@ -90,17 +104,21 @@ class ContenedorArchivo {
             dataFormateada.splice(indexABorrar,1)
             await fs.writeFile(this.path, JSON.stringify(dataFormateada, null, 2))
             return dataFormateada
+        } catch(err){
+            const custError = new CustomError(500, 'Error con el método deleteById', err)
+            logError(custError)
+            throw custError
         }
-        catch(err){console.log(err)}
     }
 
     async deleteAll(){
         try{
             await fs.writeFile(this.path, JSON.stringify([], null, 'utf-8'), null)
             return
-        }
-        catch(error){
-            console.log('Error al borrar')
+        } catch(error){
+            const custError = new CustomError(500, 'Error con el método deleteAll', err)
+            logError(custError)
+            throw custError
         }
     }
 }
