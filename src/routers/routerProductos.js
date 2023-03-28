@@ -7,7 +7,8 @@ import {
     modificarProductoById,
     crearProducto,
     borrarProductoById,
-    borrarTodos
+    borrarTodos,
+    listarPreciosUSD
 } from '../controllers/controllersProductos.js'
 
 const routerProductos = express.Router()
@@ -40,10 +41,11 @@ const soloAdmins = (req, res, next) =>{
 
 // Rutas
 routerProductos.get('', getProductos)
-routerProductos.get('/:id', getProductoById)
+routerProductos.get('/preciosUSD', listarPreciosUSD)
+routerProductos.get('/producto/:id', getProductoById)
 routerProductos.post('', soloAdmins, upload.single('file'), crearProducto)
-routerProductos.put('/:id', soloAdmins, modificarProductoById)
-routerProductos.delete('/:id', soloAdmins, borrarProductoById)
+routerProductos.put('/producto/:id', soloAdmins, modificarProductoById)
+routerProductos.delete('/producto/:id', soloAdmins, borrarProductoById)
 routerProductos.delete('', borrarTodos)
 
 export default routerProductos

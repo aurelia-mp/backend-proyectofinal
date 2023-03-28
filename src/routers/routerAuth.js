@@ -54,7 +54,6 @@ passport.serializeUser((usuario, done) => {
 passport.deserializeUser((nombre, done) => {
     users.getByUsername(nombre)
     .then((res=>{
-        console.log('res desde deserializacion' + res)
         done(null,res)
     }))
     .catch((err) =>{
