@@ -24,28 +24,7 @@ export const getProductos = (req,res) =>{
 }
 
 export const listarPreciosUSD = (req, res) =>{
-    const mapearProductos = (items) =>{
-        items.map((prod) => {
-            const cotizaciones = {
-                precioDolar: cotizador.getPrecioSegunMoneda(prod.precio, 'USD'),
-                precioARS: cotizador.getPrecioSegunMoneda(prod.precio, 'ARS'),
-            }
-            console.log('log desde l44' + Object.entries(cotizaciones));
-
-            //const productosUSD = new ProductoDTO(prod, cotizaciones);
-            return new ProductoDTO(prod, cotizaciones);
-            //return
-        })
-    }
-    productosApi.getAll()
-    .then((productos) =>{
-        const productosUSD = mapearProductos(productos)
-        console.log('productos con precios USD' + productosUSD)
-        res.json(productosUSD)
-    })
-    // .then(productos=>{
-    //     console.log('BUSCANDO PRECIOS EN USD -----')
-    //     productos.map((prod) => {
+    // const mapearProductos = productos.map((prod) => {
     //         const cotizaciones = {
     //             precioDolar: cotizador.getPrecioSegunMoneda(prod.precio, 'USD'),
     //             precioARS: cotizador.getPrecioSegunMoneda(prod.precio, 'ARS'),
@@ -56,10 +35,21 @@ export const listarPreciosUSD = (req, res) =>{
     //         return new ProductoDTO(prod, cotizaciones);
     //         //return
     //     })
-    //     res.json(productosUSD)
-    //     // res.render('preciosUSD', {productos: productosUSD})
 
-    // })
+    productosApi.getAll()
+    .then((productos) =>{
+        // const productosUSD = mapearProductos(productos)
+        const productosUSD = productos.map((prod) => {
+            const cotizaciones = {
+                precioDolar: cotizador.getPrecioSegunMoneda(prod.precio, 'USD'),
+                precioARS: cotizador.getPrecioSegunMoneda(prod.precio, 'ARS'),
+            }
+
+            return new ProductoDTO(prod, cotizaciones);
+
+        })
+        res.render('preciosUSD', {productos: productosUSD})
+    })
     .catch(err=>{
         logError(err)
         res.send(err)
