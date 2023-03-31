@@ -24,21 +24,8 @@ export const getProductos = (req,res) =>{
 }
 
 export const listarPreciosUSD = (req, res) =>{
-    // const mapearProductos = productos.map((prod) => {
-    //         const cotizaciones = {
-    //             precioDolar: cotizador.getPrecioSegunMoneda(prod.precio, 'USD'),
-    //             precioARS: cotizador.getPrecioSegunMoneda(prod.precio, 'ARS'),
-    //         }
-    //         console.log('log desde l44' + Object.entries(cotizaciones));
-
-    //         //const productosUSD = new ProductoDTO(prod, cotizaciones);
-    //         return new ProductoDTO(prod, cotizaciones);
-    //         //return
-    //     })
-
     productosApi.getAll()
     .then((productos) =>{
-        // const productosUSD = mapearProductos(productos)
         const productosUSD = productos.map((prod) => {
             const cotizaciones = {
                 precioDolar: cotizador.getPrecioSegunMoneda(prod.precio, 'USD'),

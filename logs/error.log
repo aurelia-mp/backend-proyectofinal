@@ -1115,3 +1115,61 @@
     at mapearProductos (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:30:9)
     at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:44:30
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-03-31T14:03:47.239] [ERROR] error - Error: Error subiendo el archivo
+    at crearProducto (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:102:23)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at multerMiddleware (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/multer/lib/make-middleware.js:13:41)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at soloAdmins (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/routers/routerProductos.js:38:9)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:114:3)
+[2023-03-31T14:03:47.265] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: MongoBulkWriteError: connection establishment was cancelled
+      at resultHandler (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongodb/lib/bulk/common.js:395:29)
+      at /Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongodb/lib/utils.js:349:66
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    connectionGeneration: 0,
+    writeErrors: [],
+    result: BulkWriteResult { result: [Object] },
+    insertedDocs: [ [Object] ],
+    [Symbol(errorLabels)]: Set(1) { 'ResetPool' }
+  }
+}
+[2023-03-31T14:04:48.971] [ERROR] error - Error: Error subiendo el archivo
+    at crearProducto (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:89:23)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at multerMiddleware (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/multer/lib/make-middleware.js:13:41)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at soloAdmins (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/routers/routerProductos.js:38:9)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:114:3)
+[2023-03-31T14:19:21.112] [ERROR] error - Error: Error subiendo el archivo
+    at crearProducto (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:89:23)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at multerMiddleware (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/multer/lib/make-middleware.js:13:41)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at soloAdmins (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/routers/routerProductos.js:38:9)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:114:3)
+[2023-03-31T14:22:50.252] [ERROR] error - Error: Error subiendo el archivo
+    at crearProducto (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:89:23)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at multerMiddleware (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/multer/lib/make-middleware.js:13:41)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at soloAdmins (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/routers/routerProductos.js:38:9)
+    at Layer.handle [as handle_request] (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:144:13)
+    at Route.dispatch (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express/lib/router/route.js:114:3)

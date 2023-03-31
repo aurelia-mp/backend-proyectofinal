@@ -3011,3 +3011,5 @@
 [2023-03-30T16:02:41.119] [WARN] warn - ruta /js/main.js método GET no implementada
 [2023-03-30T16:02:41.123] [WARN] warn - ruta /css/estilos.css método GET no implementada
 [2023-03-30T16:02:41.137] [WARN] warn - ruta /favicon.ico método GET no implementada
+[2023-03-31T14:07:49.725] [WARN] warn - ruta /producto/63a9c8e069393930a6a47027 método PUT no implementada
+[2023-03-31T14:08:34.601] [WARN] warn - ruta /api/producto/63a9c8e069393930a6a47027 método PUT no implementada
