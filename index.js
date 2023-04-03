@@ -99,3 +99,5 @@ if (config.mode == 'CLUSTER' && cluster.isPrimary) {
         logError(error)    
     })
 }
+
+export default app

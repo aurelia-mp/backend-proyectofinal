@@ -11,13 +11,15 @@ log4js.configure({
     appenders:{
         myLoggerConsole: {type: 'console'}, 
         loggerFileWarn: {type:'file', filename: './logs/warn.log'},
-        loggerFileError: {type: 'file', filename: './logs/error.log'}
-        
+        loggerFileError: {type: 'file', filename: './logs/error.log'},
+        loggerFileInfo: {type: 'file', filename: './logs/info.log'}
     },
     categories:{
         warn: {appenders: ['loggerFileWarn'], level: 'warn'},
         error: {appenders: ['loggerFileError'], level: 'error'},
-        default: {appenders: ['myLoggerConsole'], level: 'info'},
+        // default: {appenders: ['myLoggerConsole'], level: 'info'},
+        // Se cambia a un archivo para facilitar lectura de tests
+        default: {appenders: ['loggerFileInfo'], level: 'info'},
     }
 })
 

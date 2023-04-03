@@ -2,7 +2,7 @@ import {
     productosDao as productosApi,
 } from '../daos/index.js'
 
-import { logError } from '../../scripts/loggers/loggers.js'
+import { logError, logWarn } from '../../scripts/loggers/loggers.js'
 import { carritoEnCurso } from './controllersCarrito.js'
 import ProductoDTO from '../clases/ProductoDTO.js'
 import Cotizador from '../clases/Cotizador.js'
@@ -15,7 +15,9 @@ export const getProductos = (req,res) =>{
     .then(productos=>{
         carritoEnCurso && (idCarrito = carritoEnCurso)
         console.log("idCarrito desde Controller " + idCarrito)
-        res.render('products', {productos: productos, idCarrito: idCarrito || null })
+        // SE MODIFICA LA RESPUESTA PARA FACILITAR EL TESTEO
+        //res.render('products', {productos: productos, idCarrito: idCarrito || null })
+        res.json(productos)
     })
     .catch(err=>{
         logError(err)
@@ -76,8 +78,10 @@ export const modificarProductoById = (req,res) =>{
     }
     productosApi.udpateById(id, cambios)
 
-    .then(()=>{
+    .then((productoActualizado)=>{
+        // SE MODIFICA LA RESPUESTA PARA FACILITAR EL TESTEO
         res.send(`Producto ${id} actualizado`)
+        // res.send(productoActualizado)
     })
 }
 
@@ -88,7 +92,8 @@ export const crearProducto = (req,res,next) =>{
     if(!file) {
         const error = new Error('Error subiendo el archivo')
         logError(error)
-        error.httpStatusCode = 400
+        // Se comenta el status code para permitir testear la api sin subida de archivo
+        // error.httpStatusCode = 400
         // se comenta el return para poder guardar registros via postman, sin subir la imagen
         // return next(error)
         console.log('Error al subir el archivo, producto guardado sin imagen' + error)
@@ -109,16 +114,22 @@ export const crearProducto = (req,res,next) =>{
     if(!req.body.nombre || !req.body.precio) {
         const error = new Error('Faltan campos obligarios')
         error.httpStatusCode = 400
-        logWarn(err)
+        logWarn(error)
         return next(error)
     }
     productosApi.save(producto)
 
-    .then(() =>{
+    .then((idProductoNuevo) =>{
         console.log('Producto guardado')
         productosApi.getAll()
         .then((listaProductos) =>{
-            res.render('main', {listaProductos})
+            // SE MODIFICA LA RESPUESTA PARA FACILITAR EL TESTEO
+            // res.render('main', {listaProductos})
+            let respuesta = {
+                "prodsActualizados" : listaProductos,
+                "idNuevo" : idProductoNuevo
+            }
+            res.json(respuesta)
         })
     })
 }
