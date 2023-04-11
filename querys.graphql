@@ -5,6 +5,7 @@ mutation {
     codigo: 1123,
     precio: 100.50,
     stock: 1,
+    thumbnail: "/upload/item4.jpeg"
     }) {
         _id
     }
@@ -19,7 +20,7 @@ query {
 }
 
 query {
-  getProductoById(id: "642ab4c9d963bf954b85a68d") {
+  getProductoById(id: "63a9c8e069393930a6a47029") {
     _id
     nombre
     descripcion
@@ -37,9 +38,14 @@ mutation {
 
 
 mutation {
-  modificarProductoById(id: "642ab4c9d963bf954b85a68d") {
-    _id
+  modificarProductoById(id: "6435d830a77ba2b9f234ad21", datos: {
+    nombre: "Vino Modificado Otra vez",
+    precio: 100,
+  }) {
     nombre
     descripcion
-  }
+    codigo
+    precio
+    stock
+  } 
 }

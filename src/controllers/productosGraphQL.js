@@ -2,15 +2,10 @@ import {
     productosDao as productosApi,
 } from '../daos/index.js'
 
-import {logWarn, logError} from '../../scripts/loggers/loggers.js'
-
-
-
 export const getProductos = async () =>{
     const productos = await productosApi.getAll()
     return productos
 }
-
 
 export const getProductoById = async ({id}) =>{
     const producto = await productosApi.getById(id)
@@ -29,33 +24,15 @@ export const borrarProductoById = async ({id}) => {
     else return producto
 }
 
-export const modificarProductoById = (req,res) =>{
-    let id = req.params.id
-    let timestamp= Date.now()
-
-    let cambios = {
-        ...req.body,
-        timestamp:timestamp
+export const modificarProductoById = async ({id, datos}) =>{
+    const productoActualizado = await productosApi.udpateById(id, datos)
+    if (!productoActualizado) {
+        throw new Error ('Producto no encontrado')
     }
-    productosApi.udpateById(id, cambios)
-
-    .then((id)=>{
-        return id
-    })
+    else return productoActualizado
 }
 
 export const crearProducto = async ({datos}) =>{
-    const timestamp = Date.now()
-
-    let producto = {
-        ...datos,
-        timestamp: timestamp
-    }
-
     const idNuevo = await productosApi.save(datos)
-
-    return {
-        _id: idNuevo,
-        
-    }
+    return idNuevo
 }

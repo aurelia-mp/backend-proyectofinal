@@ -1266,3 +1266,39 @@
     _message: 'productos validation failed'
   }
 }
+[2023-04-11T18:51:40.139] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}
+[2023-04-11T18:55:53.034] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}

@@ -24,6 +24,7 @@ const productoSchema = buildSchema(`
     codigo: Float,
     precio: Float,
     stock: Float,
+    thumbnail: String
   }
   type Query {
     getProductos: [Producto],
