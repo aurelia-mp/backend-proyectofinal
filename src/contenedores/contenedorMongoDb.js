@@ -1,10 +1,7 @@
 import mongoose from 'mongoose'
-import config from '../config.js'
 import CustomError from '../clases/CustomError.class.js'
 import MongoDBClient from '../clases/MongoDBClient.class.js'
 import {logInfo, logError} from '../../scripts/loggers/loggers.js'
-
-// await mongoose.connect(config.mongodb.cnxStr, config.mongodb.options)
 
 class ContenedorMongoDb {
     constructor(nombreColeccion, esquema) {
@@ -115,7 +112,10 @@ class ContenedorMongoDb {
            await this.connexion.connect()
 
             let itemABorrar = await this.coleccion.findByIdAndDelete({_id: number})
-            return itemABorrar ?  await this.coleccion.find({}) : null
+            return itemABorrar?  itemABorrar : null
+
+            // Se modificó el return para GraphQL para que retornee el item a borrar y no la coleccion completa
+            // return itemABorrar ?  await this.coleccion.find({}) : null
         } catch(err){
             const custError = new CustomError(500, 'Error con el método deleteById', err)
             logError(custError)

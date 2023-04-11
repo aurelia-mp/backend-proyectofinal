@@ -1115,3 +1115,154 @@
     at mapearProductos (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:30:9)
     at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:44:30
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-04-11T12:48:27.373] [ERROR] error - Error: Error subiendo el archivo
+    at Object.crearProducto (file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:90:23)
+    at defaultFieldResolver (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/graphql/execution/execute.js:988:36)
+    at executeField (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/graphql/execution/execute.js:481:20)
+    at /Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/graphql/execution/execute.js:377:22
+    at promiseReduce (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/graphql/jsutils/promiseReduce.js:23:9)
+    at executeFieldsSerially (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/graphql/execution/execute.js:373:43)
+    at executeOperation (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/graphql/execution/execute.js:347:14)
+    at execute (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/graphql/execution/execute.js:136:20)
+    at graphqlMiddleware (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/express-graphql/index.js:125:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-04-11T13:21:19.486] [ERROR] error - TypeError: res.render is not a function
+    at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/controllersProductos.js:18:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-04-11T13:34:36.831] [ERROR] error - SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/productosGraphQL.js:13:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-04-11T13:35:19.161] [ERROR] error - SyntaxError: Unexpected token o in JSON at position 1
+    at JSON.parse (<anonymous>)
+    at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/productosGraphQL.js:13:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-04-11T13:38:40.571] [ERROR] error - TypeError: res.json is not a function
+    at file:///Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/src/controllers/productosGraphQL.js:13:26
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-04-11T15:14:10.388] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}
+[2023-04-11T15:14:42.470] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}
+[2023-04-11T15:15:39.470] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}
+[2023-04-11T15:15:42.731] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}
+[2023-04-11T15:22:13.165] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}
+[2023-04-11T15:22:43.426] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}
+[2023-04-11T15:32:02.300] [ERROR] error - CustomError {
+  codigo: 500,
+  descripcion: 'Error al guardar',
+  detalle: Error: productos validation failed: thumbnail: Path `thumbnail` is required.
+      at ValidationError.inspect (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/mongoose/lib/error/validation.js:50:26)
+      at formatValue (node:internal/util/inspect:806:19)
+      at formatProperty (node:internal/util/inspect:1920:11)
+      at formatRaw (node:internal/util/inspect:1055:9)
+      at formatValue (node:internal/util/inspect:841:10)
+      at inspect (node:internal/util/inspect:365:10)
+      at formatWithOptionsInternal (node:internal/util/inspect:2273:40)
+      at Object.format (node:internal/util/inspect:2130:10)
+      at basicLayout (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/layouts.js:65:52)
+      at app (/Users/monniera/Documents/Perso/PROGRAMACION/coderhouse/BACKEND/Coderhouse-DesafiosBackend/DesafiosBackEnd/desafio7-entregaParcialProyecto/node_modules/log4js/lib/appenders/file.js:98:23) {
+    errors: { thumbnail: [ValidatorError] },
+    _message: 'productos validation failed'
+  }
+}

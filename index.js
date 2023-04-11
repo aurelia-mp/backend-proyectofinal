@@ -9,6 +9,9 @@ import { logInfo, logWarn } from './scripts/loggers/loggers.js'
 import cluster from 'cluster'
 import os from 'os'
 
+import GraphQLController from "./src/controllers/graphQLController.js";
+
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
@@ -42,6 +45,9 @@ app.use((req, res, next) =>{
 app.use('/api/productos', routerProductos)
 app.use('/api/carritos', routerCarrito)
 app.use('/', routerAuth)
+
+app.use('/graphql', new GraphQLController());
+
 
 // Loggeo de rutas inexistentes
 

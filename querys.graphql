@@ -1,0 +1,45 @@
+mutation {
+  crearProducto(datos: {
+    nombre: "vino desde graphql",
+    descripcion: "Un vino creado via una query de graphql",
+    codigo: 1123,
+    precio: 100.50,
+    stock: 1,
+    }) {
+        _id
+    }
+}
+
+query {
+    getProductos {
+        nombre
+        descripcion
+        precio  
+    }
+}
+
+query {
+  getProductoById(id: "642ab4c9d963bf954b85a68d") {
+    _id
+    nombre
+    descripcion
+    precio
+  }
+}
+
+mutation {
+  borrarProductoById(id: "642ab53e7fadd7ef098f9b2b") {
+    _id
+    nombre
+    descripcion
+  }
+}
+
+
+mutation {
+  modificarProductoById(id: "642ab4c9d963bf954b85a68d") {
+    _id
+    nombre
+    descripcion
+  }
+}

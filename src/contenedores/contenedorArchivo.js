@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import CustomError from '../clases/CustomError.class.js'
-import {logInfo, logError} from '../../scripts/loggers/loggers.js'
+import {logError} from '../../scripts/loggers/loggers.js'
 
 class ContenedorArchivo {
     constructor(path){
