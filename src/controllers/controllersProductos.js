@@ -2,7 +2,7 @@ import {
     productosDao as productosApi,
 } from '../daos/index.js'
 
-import { logError } from '../../scripts/loggers/loggers.js'
+import { logError, logWarn } from '../../scripts/loggers/loggers.js'
 import { carritoEnCurso } from './controllersCarrito.js'
 import ProductoDTO from '../clases/ProductoDTO.js'
 import Cotizador from '../clases/Cotizador.js'
@@ -24,18 +24,6 @@ export const getProductos = (req,res) =>{
 }
 
 export const listarPreciosUSD = (req, res) =>{
-    // const mapearProductos = productos.map((prod) => {
-    //         const cotizaciones = {
-    //             precioDolar: cotizador.getPrecioSegunMoneda(prod.precio, 'USD'),
-    //             precioARS: cotizador.getPrecioSegunMoneda(prod.precio, 'ARS'),
-    //         }
-    //         console.log('log desde l44' + Object.entries(cotizaciones));
-
-    //         //const productosUSD = new ProductoDTO(prod, cotizaciones);
-    //         return new ProductoDTO(prod, cotizaciones);
-    //         //return
-    //     })
-
     productosApi.getAll()
     .then((productos) =>{
         // const productosUSD = mapearProductos(productos)
@@ -122,7 +110,7 @@ export const crearProducto = (req,res,next) =>{
     if(!req.body.nombre || !req.body.precio) {
         const error = new Error('Faltan campos obligarios')
         error.httpStatusCode = 400
-        logWarn(err)
+        logWarn(error)
         return next(error)
     }
     productosApi.save(producto)
